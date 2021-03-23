@@ -1,3 +1,9 @@
-<h1>Welcome to MyTrainer!</h1>
-<h2><%=@user.username%>'s Show Page</h2>
-<a href='/logout'>
+<h1><%=@user.username%></h1>
+<h2>My exercises:</h2><br>
+<ul>
+<%@user.exercises.each do |exercise|%>
+    <li><a href="/exercises/<%=exercise.id%>"><%=exercise.name%></a></li><br>
+<%end%>
+</ul>
+
+
