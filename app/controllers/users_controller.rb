@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
     #route usage: to render login form
     get '/login' do
         erb :'/users/login'
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
         if @user.authenticate(params[:password])
             #create session
             session[:user_id] = @user.id
-            redirect "users/#{@user.id}"
+            redirect "/users/#{@user.slug}"
         else
 
         end
@@ -24,10 +25,24 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        @user = User.create(username: username[:username], email: email[:email], password: password[:password])
+        if params[:username] != "" && params[:email] != "" && params[:password] != ""
+            @user = User.create(params)
+            session[:user_id] = @user.id
+            redirect "/users/#{@user.slug}"
+        else
+            #include failure message
+            redirect '/signup'
+        end
+    end
+    
+    #show user route
+    get '/users/:slug' do
+        @user = User.find_by_slug(params[:slug])
+        erb :'/users/show'
     end
 
-    get '/users/:id' do
-        "Helllooooo"
+    get '/logout' do
+        session.clear
+        redirect '/'
     end
 end
