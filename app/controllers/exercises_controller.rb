@@ -28,4 +28,27 @@ class ExercisesController < ApplicationController
         erb :'/exercises/all'
     end
 
+    get '/search' do
+        erb :'/exercises/search'
+    end
+
+    post '/search' do
+        if !logged_in?
+            redirect '/'
+        else
+            if Exercise.find_by(muscle_group: params["search"].capitalize())
+                @muscle_group = params["search"].capitalize
+                erb :'/exercises/all_muscles'
+            elsif Exercise.find_by(name: params["search"].titleize)
+                @name = params["search"].titleize
+                erb :'/exercises/all_names'
+            elsif User.find_by(username: params["search"])
+                @user = params["search"]
+                erb :'/users/all_users'
+            else
+                redirect '/search'
+            end
+        end
+    end
+
 end

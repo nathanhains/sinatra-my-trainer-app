@@ -1,0 +1,9 @@
+<h1>All Exercises showing for: <%=@name%></h1><br>
+<ul>
+<%Exercise.all.each do |exercise|%>
+    <%if exercise.name == @name%>
+    <li><a href="/exercises/<%=exercise.id%>"><%=exercise.name%></a><br>
+    By: <a href="/users/<%=exercise.user.slug%>"><%=exercise.user.username%></a></li><br>
+    <%end%>
+<%end%>
+</ul>

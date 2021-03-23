@@ -1,0 +1,8 @@
+<h1>All Users showing for: <%=@user%></h1><br>
+<ul>
+<%User.all.each do |user|%>
+    <%if user.username == @user%>
+    <li><a href="/users/<%=user.slug%>"><%=user.username%></a><br>
+    <%end%>
+<%end%>
+</ul>
