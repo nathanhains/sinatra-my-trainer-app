@@ -28,6 +28,11 @@ class ApplicationController < Sinatra::Base
       #reduces database calls(memoization) if its already populated, wont get database again
       @current_user ||= User.find_by(id: session[:user_id])
     end
+
+    def authorized?
+      @exercise.user == current_user
+    end
+    
   end
 
 end

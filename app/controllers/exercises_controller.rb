@@ -27,7 +27,7 @@ class ExercisesController < ApplicationController
     get '/exercises/:id/edit' do
         set_exercise
         if logged_in?
-            if @exercise.user == current_user
+            if authorized?
                 erb :'/exercises/edit'
             else
                 redirect "/users/#{current_user.id}"
@@ -40,7 +40,7 @@ class ExercisesController < ApplicationController
     patch '/exercises/:id' do
         set_exercise
         if logged_in?
-            if @exercise.user == current_user
+            if authorized?
                 @exercise.update(name: params[:name], muscle_group: params[:muscle_group], sets: params[:sets], reps: params[:reps], description: params[:description])
                 redirect "/exercises/#{@exercise.id}"
             else
