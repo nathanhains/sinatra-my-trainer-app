@@ -1,9 +1,10 @@
-<h1>Your Exercise:</h1>
+<h1>Exercise:</h1>
 <h2><%=@exercise.name%></h2>
 <h3>Muscle Group: <%=@exercise.muscle_group%></h3>
 <h3>Sets: <%=@exercise.sets%></h3>
 <h3>Reps: <%=@exercise.reps%></h3>
-<h3>Description: <%=@exercise.description%></h3>
+<h3>Description: <%=@exercise.description%></h3><br>
+<h4>Created By: <a href="/users/<%=@user.slug%>"><%=@user.username%></a></h4>
 
 
 

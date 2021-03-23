@@ -4,18 +4,28 @@ class ExercisesController < ApplicationController
     end
 
     post '/exercises' do
-        if params[:name] != "" && params[:muscle_group] != "" && params[:sets] != "" && params[:reps] != "" && params[:description] != ""
-            @exercise = Exercise.create(params)
-            @exercise.user_id = session[:user_id]
-            redirect "/exercises/#{@exercise.id}"
+        if !logged_in?
+            redirect '/'
         else
-            #include failure message
-            redirect '/exercises/new'
+            if params[:name] != "" && params[:muscle_group] != "" && params[:sets] != "" && params[:reps] != "" && params[:description] != ""
+                @exercise = Exercise.create(params)
+                @exercise.user_id = session[:user_id]
+                redirect "/exercises/#{@exercise.id}"
+            else
+                #include failure message
+                redirect '/exercises/new'
+            end
         end
     end
 
     get '/exercises/:id' do
         @exercise = Exercise.find_by(id: params[:id])
+        @user = User.find_by(id: "#{@exercise.user_id}")
         erb :'/exercises/show'
     end
+
+    get '/feed' do
+        erb :'/exercises/all'
+    end
+
 end
