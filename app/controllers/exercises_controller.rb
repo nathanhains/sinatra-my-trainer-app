@@ -26,13 +26,29 @@ class ExercisesController < ApplicationController
 
     get '/exercises/:id/edit' do
         set_exercise
-        erb :'/exercises/edit'
+        if logged_in?
+            if @exercise.user == current_user
+                erb :'/exercises/edit'
+            else
+                redirect "/users/#{current_user.id}"
+            end
+        else
+            redirect '/'
+        end
     end
 
     patch '/exercises/:id' do
         set_exercise
-        @exercise.update(name: params[:name], muscle_group: params[:muscle_group], sets: params[:sets], reps: params[:reps], description: params[:description])
-        redirect "/exercises/#{@exercise.id}"
+        if logged_in?
+            if @exercise.user == current_user
+                @exercise.update(name: params[:name], muscle_group: params[:muscle_group], sets: params[:sets], reps: params[:reps], description: params[:description])
+                redirect "/exercises/#{@exercise.id}"
+            else
+                redirect "/users/#{current_user.id}"
+            end
+        else
+            redirect '/'
+        end
     end
 
     get '/feed' do
