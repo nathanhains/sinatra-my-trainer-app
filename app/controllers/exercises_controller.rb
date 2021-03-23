@@ -19,9 +19,20 @@ class ExercisesController < ApplicationController
     end
 
     get '/exercises/:id' do
-        @exercise = Exercise.find_by(id: params[:id])
+        set_exercise
         @user = User.find_by(id: "#{@exercise.user_id}")
         erb :'/exercises/show'
+    end
+
+    get '/exercises/:id/edit' do
+        set_exercise
+        erb :'/exercises/edit'
+    end
+
+    patch '/exercises/:id' do
+        set_exercise
+        @exercise.update(name: params[:name], muscle_group: params[:muscle_group], sets: params[:sets], reps: params[:reps], description: params[:description])
+        redirect "/exercises/#{@exercise.id}"
     end
 
     get '/feed' do
@@ -51,4 +62,10 @@ class ExercisesController < ApplicationController
         end
     end
 
+    private
+
+    def set_exercise
+        #params refreshed everytime its called on, scoped to controller
+        @exercise = Exercise.find(params[:id])
+    end
 end

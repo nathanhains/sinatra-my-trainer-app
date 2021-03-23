@@ -1,0 +1,19 @@
+<h1>Edit Exercise: <h1>
+<form action="/exercises/<%=@exercise.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="name"> Name: </label>
+    <input type="text" name="name" value="<%=@exercise.name%>"><br>
+
+    <label for="muscle_group"> Muscle Group: </label>
+    <input type="text" name="muscle_group" value="<%=@exercise.muscle_group%>"><br>
+
+    <label for="reps"> Reps: </label>
+    <input type="text" name="reps" value="<%=@exercise.reps%>">
+    <label for="sets"> Sets: </label>
+    <input type="text" name="sets" value="<%=@exercise.sets%>"><br>
+
+    <label for="description"> Description: </label>
+    <textarea name="description" value = "<%=@exercise.description%>"><%=@exercise.description%></textarea><br>
+
+    <input type="submit" value="Submit">
+</form>
