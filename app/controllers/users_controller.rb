@@ -18,7 +18,13 @@ class UsersController < ApplicationController
 
     end
 
+    #render signup form
     get '/signup' do
+        erb :'users/signup'
+    end
+
+    post '/users' do
+        @user = User.create(username: username[:username], email: email[:email], password: password[:password])
     end
 
     get '/users/:id' do
