@@ -1,0 +1,3 @@
+class ExerciseController < ApplicationController
+    
+end

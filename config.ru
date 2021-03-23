@@ -5,5 +5,6 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 #mounting controllers
-run ApplicationController
 use UsersController
+use ExercisesController
+run ApplicationController
