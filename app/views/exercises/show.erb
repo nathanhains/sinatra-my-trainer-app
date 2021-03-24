@@ -1,13 +1,32 @@
-<h1>Exercise:</h1>
-<h2><%=@exercise.name%></h2>
-<h3>Muscle Group: <%=@exercise.muscle_group%></h3>
-<h3>Sets: <%=@exercise.sets%></h3>
-<h3>Reps: <%=@exercise.reps%></h3>
-<h3>Description: <%=@exercise.description%></h3><br>
-<h4>Created By: <a href="/users/<%=@exercise.user.slug%>"><%=@user.username%></a></h4>
-<%if authorized?(@exercise)%>
-    <a href="/exercises/<%=@exercise.id%>/edit">Edit</a>
-<%end%>
+    <div class = "containter text-center">
+        <div class="row">
+            <div class="col">
+                <div class ="card">
+                <div class="card-header">
+                    <h4><%=@exercise.name%></h4>
+                    <%if authorized?(@exercise)%>
+                    <a class = "btn btn-sm btn-secondary" href="/exercises/<%=@exercise.id%>/edit">Edit</a>
+                    <%end%>
+                </div>
+                <div class="card-body">
+                    <h1 class="my-0 font-weight-normal">Target Muscle/
+                    <small class="text-muted"><%=@exercise.muscle_group%></small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><%=@exercise.sets%> sets</li>
+                        <li><%=@exercise.reps%> reps</li>
+                        <li><%=@exercise.description%></li>
+                        <br>
+                        <li><a class="btn btn-sm btn-secondary"href="/users/<%=@exercise.user.slug%>">Created By: <%=@user.username%></a></li>
+                    </ul>
+                </div>
+            </div>          
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
 

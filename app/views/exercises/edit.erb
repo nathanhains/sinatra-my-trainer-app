@@ -1,23 +1,24 @@
-<h1>Edit Exercise: <h1>
-<form action="/exercises/<%=@exercise.id%>" method="post">
+    <div class="text-center">
+    <form style="max-width:480px;margin:auto" action="/exercises/<%=@exercise.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <label for="name"> Name: </label>
-    <input type="text" name="name" value="<%=@exercise.name%>"><br>
+        <h1>
+        <h1>
+        <h1>
+        <h1>
+        <h1 class="h3 mb-3 font weight normal">Edit Exercise</h1>
 
-    <label for="muscle_group"> Muscle Group: </label>
-    <input type="text" name="muscle_group" value="<%=@exercise.muscle_group%>"><br>
+    <input type="text" name="name" class="form-control" value="<%=@exercise.name%>" required autofocus>
+    <input type="text" name="muscle_group" value="<%=@exercise.muscle_group%>" class="form-control">
+    <input type="text" name="reps" value="<%=@exercise.reps%>" class="form-control">
+    <input type="text" name="sets" value="<%=@exercise.sets%>" class="form-control">
+    <textarea name="description" class="form-control" value="<%=@exercise.description%>"><%=@exercise.description%></textarea>
+    <div class="mt-3">
+    <button class="btn btn-lg btn-secondary">Submit</button>
+    </div>
+    </form>
+    <h1></h1>
 
-    <label for="reps"> Reps: </label>
-    <input type="text" name="reps" value="<%=@exercise.reps%>">
-    <label for="sets"> Sets: </label>
-    <input type="text" name="sets" value="<%=@exercise.sets%>"><br>
-
-    <label for="description"> Description: </label>
-    <textarea name="description" value = "<%=@exercise.description%>"><%=@exercise.description%></textarea><br>
-
-    <input type="submit" value="Submit">
-</form>
-<form action="/exercises/<%=@exercise.id%>" method="post">
+    <form action="/exercises/<%=@exercise.id%>" method="post">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value = "Delete?">
-</form>
+    <button class="btn btn-lg btn-danger">Delete?</button>
+    </form>

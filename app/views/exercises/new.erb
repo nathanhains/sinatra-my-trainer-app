@@ -1,18 +1,44 @@
-<h1>Create a new Exercise: <h1>
-<form action="/exercises" method="post">
-    <label for="name"> Name: </label>
-    <input type="text" name="name"><br>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <label for="muscle_group"> Muscle Group: </label>
-    <input type="text" name="muscle_group"><br>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-    <label for="reps"> Reps: </label>
-    <input type="text" name="reps">
-    <label for="sets"> Sets: </label>
-    <input type="text" name="sets"><br>
+    <title>Create</title>
+  </head>
+  <body>
+  <body>
+    <div class="text-center">
+    <form style="max-width:480px;margin:auto" action="/exercises" method="post">
+        <h1>
+        <h1>
+        <h1>
+        <h1>
+        <h1 class="h3 mb-3 font weight normal">Create Exercise</h1>
 
-    <label for="description"> Description: </label>
-    <input type="text" name="description"><br>
+    <input type="text" name="name" class="form-control" placeholder="Name" required autofocus>
+    <input type="text" name="muscle_group" placeholder="Target Muscle Group" class="form-control">
+    <input type="text" name="reps" placeholder="Rep Amount" class="form-control">
+    <input type="text" name="sets" placeholder="Set Amount" class="form-control">
+    <input type="text" name="description" placeholder="Describe This Workout" class="form-control">
+    <div class="mt-3">
+    <button class="btn btn-lg btn-secondary">Submit</button>
+    </div>
+    
 
-    <input type="submit" value="Create Exercise">
-</form>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
