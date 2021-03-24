@@ -14,6 +14,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect "/users/#{@user.slug}"
         else
+            flash[:message] = "Invalid Username or Password. Please check again or register an account."
             redirect "/login"
         end
 
@@ -28,9 +29,10 @@ class UsersController < ApplicationController
         if params[:username] != "" && params[:email] != "" && params[:password] != ""
             @user = User.create(params)
             session[:user_id] = @user.id
+            flash[:message] = "Successfully created a MyTrainer account. Welcome!"
             redirect "/users/#{@user.slug}"
         else
-            #include failure message
+            flash[:message] = "Please fill out all the required fields."
             redirect '/signup'
         end
     end
