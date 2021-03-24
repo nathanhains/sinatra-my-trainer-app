@@ -1,9 +1,15 @@
-<form action="/login" method="post">
-    <label for="username">Username: </label>
-    <input type="text" name="username" value="">
 
-    <label for="password">Password: </label>
-    <input type="password" name="password" value="">
+    <div class="text-center">
+    <form style="max-width:480px;margin:auto" action="/login" method="post">
 
-    <input type="submit" value="Log In">
-</form>
+        <img class="mt-4 mb-4" src="images/this.jpeg" height="100" alt="logo">
+        <h1 class="h3 mb-3 font weight normal">Please sign in</h1>
+
+    <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+    <input type="password" name="password" placeholder="Password" class="form-control">
+    <div class="mt-3">
+    <button class="btn btn-lg btn-secondary">Sign In</button>
+    </div>
+    </form>
+    </div>
+

@@ -1,14 +1,13 @@
-<h2>Sign up!!!!</h2>
-#creating new users
-<form action="/users" method="post">
-    <label for="username">Create Username: </label>
-    <input type="text" name="username" value=""><br>
+    <div class="text-center">
+    <form style="max-width:480px;margin:auto" action="/users" method="post">
 
-    <label for="username">Enter Email: </label>
-    <input type="text" name="email" value=""><br>
+        <img class="mt-4 mb-4" src="images/this.jpeg" height="100" alt="logo">
+        <h1 class="h3 mb-3 font weight normal">Create Account</h1>
 
-    <label for="password">Create Password: </label>
-    <input type="password" name="password" value=""><br>
-
-    <input type="submit" value="Sign Up">
-</form>
+    <input type="text" name="username" class="form-control" placeholder="Create Username" required autofocus>
+    <input type="text" name="email" placeholder="Enter Email Address" class="form-control">
+    <input type="password" name="password" placeholder="Create Password" class="form-control">
+    <div class="mt-3">
+    <button class="btn btn-lg btn-secondary">Sign Up</button>
+    </form>
+    </div>
