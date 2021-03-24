@@ -1,7 +1,7 @@
-<h1><%=@user.username%></h1>
+<h1><%=current_user.username%></h1>
 <h2>My exercises:</h2><br>
 <ul>
-<%@user.exercises.each do |exercise|%>
+<%current_user.exercises.each do |exercise|%>
     <li><a href="/exercises/<%=exercise.id%>"><%=exercise.name%></a></li><br>
 <%end%>
 </ul>

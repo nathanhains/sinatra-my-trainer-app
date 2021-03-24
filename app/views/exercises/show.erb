@@ -4,8 +4,8 @@
 <h3>Sets: <%=@exercise.sets%></h3>
 <h3>Reps: <%=@exercise.reps%></h3>
 <h3>Description: <%=@exercise.description%></h3><br>
-<h4>Created By: <a href="/users/<%=@user.slug%>"><%=@user.username%></a></h4>
-<%if authorized?%>
+<h4>Created By: <a href="/users/<%=@exercise.user.slug%>"><%=@user.username%></a></h4>
+<%if authorized?(@exercise)%>
     <a href="/exercises/<%=@exercise.id%>/edit">Edit</a>
 <%end%>
 

@@ -10,6 +10,7 @@ class ExercisesController < ApplicationController
             if params[:name] != "" && params[:muscle_group] != "" && params[:sets] != "" && params[:reps] != "" && params[:description] != ""
                 @exercise = Exercise.create(params)
                 @exercise.user_id = session[:user_id]
+                @exercise.save
                 redirect "/exercises/#{@exercise.id}"
             else
                 #include failure message
@@ -27,7 +28,7 @@ class ExercisesController < ApplicationController
     get '/exercises/:id/edit' do
         set_exercise
         if logged_in?
-            if authorized?
+            if authorized?(@exercise)
                 erb :'/exercises/edit'
             else
                 redirect "/users/#{current_user.id}"
@@ -40,7 +41,7 @@ class ExercisesController < ApplicationController
     patch '/exercises/:id' do
         set_exercise
         if logged_in?
-            if authorized?
+            if authorized?(@exercise)
                 @exercise.update(name: params[:name], muscle_group: params[:muscle_group], sets: params[:sets], reps: params[:reps], description: params[:description])
                 redirect "/exercises/#{@exercise.id}"
             else
@@ -48,6 +49,16 @@ class ExercisesController < ApplicationController
             end
         else
             redirect '/'
+        end
+    end
+
+    delete '/exercises/:id' do
+        set_exercise
+        if authorized?(@exercise)
+            @exercise.destroy
+            redirect "/users/#{current_user.id}"
+        else
+            
         end
     end
 

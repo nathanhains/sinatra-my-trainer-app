@@ -17,3 +17,7 @@
 
     <input type="submit" value="Submit">
 </form>
+<form action="/exercises/<%=@exercise.id%>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value = "Delete?">
+</form>
