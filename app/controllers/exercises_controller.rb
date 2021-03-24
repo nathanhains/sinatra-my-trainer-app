@@ -5,15 +5,17 @@ class ExercisesController < ApplicationController
 
     post '/exercises' do
         if !logged_in?
+            flash[:message] = "Unauthorized. Please Log In or Sign Up."
             redirect '/'
         else
             if params[:name] != "" && params[:muscle_group] != "" && params[:sets] != "" && params[:reps] != "" && params[:description] != ""
                 @exercise = Exercise.create(params)
                 @exercise.user_id = session[:user_id]
                 @exercise.save
+                flash[:message] = "Exercise Successfully Created."
                 redirect "/exercises/#{@exercise.id}"
             else
-                #include failure message
+                flash[:message] = "Please fill out all the required fields."
                 redirect '/exercises/new'
             end
         end
@@ -31,9 +33,11 @@ class ExercisesController < ApplicationController
             if authorized?(@exercise)
                 erb :'/exercises/edit'
             else
-                redirect "/users/#{current_user.id}"
+                flash[:message] = "Unauthorized"
+                redirect "/users/#{current_user.slug}"
             end
         else
+            flash[:message] = "Unauthorized. Please Log in or Sign up."
             redirect '/'
         end
     end
@@ -41,13 +45,16 @@ class ExercisesController < ApplicationController
     patch '/exercises/:id' do
         set_exercise
         if logged_in?
-            if authorized?(@exercise)
+            if authorized?(@exercise) && params[:name] != "" && params[:muscle_group] != "" && params[:sets] != "" && params[:reps] != "" && params[:description] != ""
                 @exercise.update(name: params[:name], muscle_group: params[:muscle_group], sets: params[:sets], reps: params[:reps], description: params[:description])
+                flash[:message] = "Exercise Successfully Updated."
                 redirect "/exercises/#{@exercise.id}"
             else
-                redirect "/users/#{current_user.id}"
+                flash[:message] = "Unauthorized"
+                redirect "/users/#{current_user.slug}"
             end
         else
+            flash[:message] = "Unauthorized. Please Log In or Sign Up."
             redirect '/'
         end
     end
@@ -56,14 +63,24 @@ class ExercisesController < ApplicationController
         set_exercise
         if authorized?(@exercise)
             @exercise.destroy
-            redirect "/users/#{current_user.id}"
+            flash[:message] = "Exercise Successfully deleted."
+            redirect "/users/#{current_user.slug}"
         else
-            
+            flash[:message] = "Unauthorized"
+            redirect "/users/#{current_user.slug}"
         end
     end
 
-    get '/feed' do
-        erb :'/exercises/all'
+    get '/oldest' do
+        erb :'/exercises/oldest'
+    end
+
+    get '/newest' do
+        erb :'/exercises/newest'
+    end
+
+    get '/favorites' do
+        erb :'/exercises/favorites'
     end
 
     get '/search' do
@@ -72,6 +89,7 @@ class ExercisesController < ApplicationController
 
     post '/search' do
         if !logged_in?
+            flash[:message] = "Unauthorized. Please Log In or Sign Up."
             redirect '/'
         else
             if Exercise.find_by(muscle_group: params["search"].capitalize())
@@ -84,6 +102,7 @@ class ExercisesController < ApplicationController
                 @user = params["search"]
                 erb :'/users/all_users'
             else
+                flash[:message] = "No Results."
                 redirect '/search'
             end
         end
