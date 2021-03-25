@@ -1,6 +1,7 @@
 ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
+require 'dotenv/load'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
 set :database, {:adapter =>'sqlite3', :database=>'wiki.db'}
