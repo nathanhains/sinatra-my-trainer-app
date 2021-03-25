@@ -4,7 +4,7 @@ class User <ActiveRecord::Base
     validates :email, presence: true
     validates :email, uniqueness: true 
     has_many :exercises
-    has_many :likes, through: :exercises
+    has_many :likes, through: :exercises, dependent: :destroy
     include Slugifiable
     extend Slugifiable::ClassMethods
 end

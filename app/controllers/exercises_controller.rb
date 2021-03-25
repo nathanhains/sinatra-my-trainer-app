@@ -79,15 +79,11 @@ class ExercisesController < ApplicationController
         erb :'/exercises/newest'
     end
 
-    get '/favorites' do
-        erb :'/exercises/favorites'
+    get '/top' do
+        erb :'/exercises/top'
     end
 
     get '/search' do
-        erb :'/exercises/search'
-    end
-
-    post '/search' do
         if !logged_in?
             flash[:message] = "Unauthorized. Please Log In or Sign Up."
             redirect '/'
