@@ -3,10 +3,10 @@ class UsersController < ApplicationController
         find_exercise
         if already_liked?
             flash[:message] = "You cannot like more than once."
-            redirect "/oldest"
+            redirect back
         else
             @exercise.likes.create(user_id: current_user.id, exercise_id: @exercise.id)
-            redirect "/oldest"
+            redirect back
         end
     end 
 
