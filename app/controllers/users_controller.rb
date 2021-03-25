@@ -26,13 +26,14 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        if params[:username] != "" && params[:email] != "" && params[:password] != ""
+        @user = User.new(params)
+        if @user.save
             @user = User.create(params)
             session[:user_id] = @user.id
             flash[:message] = "Successfully created a MyTrainer account. Welcome!"
             redirect "/users/#{@user.slug}"
         else
-            flash[:message] = "Please fill out all the required fields."
+            flash[:message] = @user.errors.full_messages.to_sentence
             redirect '/signup'
         end
     end
