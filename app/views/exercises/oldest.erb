@@ -1,17 +1,17 @@
-    <div class = "container text-center py-5">
+    <div class = "container-sm text-center py-5">
     <h1 class="display-4">Feed</h1>
             <div class="dropdown">
-  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
     Sort By
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton2">
     <li><a class="dropdown-item" href="/oldest">Oldest</a></li>
     <li><a class="dropdown-item" href="/newest">Newest</a></li>
     <li><a class="dropdown-item" href="/top">Top</a></li>
   </ul>
     </div>
     </div>
-    <div class = "containter text-center">
+    <div class = "container-sm text-center">
         <div class="row">
             <%Exercise.order(:created_at).each do |exercise|%>
             <div class="col">

@@ -1,7 +1,7 @@
-<div class = "container text-center py-5">
+<div class = "container-sm text-center py-5">
     <h1 class="display-4">All Exercises showing for: <%=@name%></h1>
     </div>
-    <div class = "containter text-center">
+    <div class = "container-sm text-center">
         <div class="row">
             <%Exercise.all.each do |exercise|%>
             <%if exercise.name == @name%>

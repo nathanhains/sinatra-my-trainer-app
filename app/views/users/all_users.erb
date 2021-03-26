@@ -1,7 +1,7 @@
-<div class = "container text-center py-5">
+<div class = "container-sm text-center py-5">
     <h1 class="display-4">All Users showing for: <%=@user%></h1>
     </div>
-    <div class = "containter text-center">
+    <div class = "container-sm text-center">
         <div class="row">
             <%User.all.each do |user|%>
             <%if user.username == @user%>
@@ -15,7 +15,7 @@
                     <small class="text-muted"><%=user.exercises.count%></small></h1>
                     <ul class="list-unstyled mt-3 mb-4">
                         <br>
-                        <li>Total Likes: <%=user.likes.count%></li>
+                        <li>Popularity: <%=user.likes.count%></li>
                     </ul>
                 </div>
             </div>

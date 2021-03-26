@@ -17,7 +17,6 @@ class UsersController < ApplicationController
             flash[:message] = "Invalid Username or Password. Please check again or register an account."
             redirect "/login"
         end
-
     end
 
     #render signup form
@@ -28,7 +27,6 @@ class UsersController < ApplicationController
     post '/users' do
         @user = User.new(params)
         if @user.save
-            @user = User.create(params)
             session[:user_id] = @user.id
             flash[:message] = "Successfully created a MyTrainer account. Welcome!"
             redirect "/users/#{@user.slug}"
