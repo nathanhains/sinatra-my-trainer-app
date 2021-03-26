@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class LikesController < ApplicationController
     get '/likes/:id' do
         find_exercise
         if already_liked?
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
 
     def already_liked?
+
         Like.where(user_id: current_user.id, exercise_id:
         params[:id]).exists?
     end

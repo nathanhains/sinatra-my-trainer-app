@@ -48,4 +48,9 @@ class UsersController < ApplicationController
         session.clear
         redirect '/'
     end
+
+    get '/all_friends/:id' do
+        @user = User.find(params[:id])
+        erb :'/users/all_friends'
+    end
 end

@@ -3,6 +3,7 @@ class User <ActiveRecord::Base
     validates :username, presence: true
     validates :email, presence: true
     validates :email, uniqueness: true 
+    has_many :friends
     has_many :exercises
     has_many :likes, through: :exercises, dependent: :destroy
     include Slugifiable

@@ -88,10 +88,10 @@ class ExercisesController < ApplicationController
             flash[:message] = "Unauthorized. Please Log In or Sign Up."
             redirect '/'
         else
-            if Exercise.find_by(muscle_group: params["search"].capitalize()) || Exercise.find_by(muscle_group: params["search"])
+            if Exercise.find_by(muscle_group: params["search"])
                 @muscle_group = params["search"]
                 erb :'/exercises/all_muscles'
-            elsif Exercise.find_by(name: params["search"].titleize) || Exercise.find_by(name: params["search"])
+            elsif Exercise.find_by(name: params["search"])
                 @name = params["search"]
                 erb :'/exercises/all_names'
             elsif User.find_by(username: params["search"])

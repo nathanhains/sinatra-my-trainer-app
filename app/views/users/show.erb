@@ -1,8 +1,18 @@
  
 <div class = "container text-center py-5">
     <h1 class="display-4"><%=@user.username%></h1>
-    <p>Total Likes: <%=@user.likes.count%>
-    <p class="lead">My Exercises</p>
+    <p>Friends: <a class = "btn btn-sm btn-outline-secondary" href='/all_friends/<%=@user.id%>'><%=@user.friends.count%></a></p>
+    <p>Popularity: <%=@user.likes.count%></p>
+    <%if @user != current_user && !already_added?%>
+    <h4><a class="btn btn-sm btn-dark" href="/friends/<%=@user.id%>">Add Friend</a></h4>
+    <%end%>
+    <p></p>
+    <br>
+    <%if @user == current_user%>
+        <p class="lead">My Exercises</p>
+    <%else%>
+        <p class="lead">Exercises</p>
+    <%end%>
     </div>
     <div class = "containter text-center">
         <div class="row">

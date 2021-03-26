@@ -34,6 +34,11 @@ class ApplicationController < Sinatra::Base
       exercise.user == current_user
     end
 
+    def already_added?
+      Friend.where(user_id: current_user.id, friend_id:
+      @user.id).exists?
+    end
+
   end
 
 end
